@@ -4,7 +4,7 @@ import android.app.Application;
 
 public class AssistantApp extends Application{
 
-	public boolean IsControlCenterActivate;
+	private boolean IsControlCenterActivate;
 	@Override
 	public void onCreate() {
 		initApp();
@@ -12,6 +12,12 @@ public class AssistantApp extends Application{
 	}
 	private void initApp() {
 		IsControlCenterActivate= false;
+	}
+	public boolean IsControlCenterActivate() {
+		return IsControlCenterActivate;
+	}
+	public void setControlCenterActivate(boolean isControlCenterActivate) {
+		IsControlCenterActivate = isControlCenterActivate;
 	}
 
 }

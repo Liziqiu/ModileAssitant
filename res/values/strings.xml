@@ -4,6 +4,7 @@
     <string name="app_name">MobileAssistant</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="control_center">Control Center</string>
+    <string name="control_center_on">Control Center(on)</string>
+    <string name="control_center_off">Control Center(off)</string>
 
 </resources>

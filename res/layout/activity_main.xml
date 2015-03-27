@@ -13,7 +13,7 @@
         android:id="@+id/control_center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/control_center" ></Button>
+        android:text="@string/control_center_on" ></Button>
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
