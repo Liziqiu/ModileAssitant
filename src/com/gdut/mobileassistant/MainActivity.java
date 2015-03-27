@@ -2,6 +2,7 @@ package com.gdut.mobileassistant;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,7 +26,8 @@ public class MainActivity extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		if(v == ControlCenter){
-			
+			Intent i = new Intent(this,com.gdut.mobileassistant.service.AssistantService.class);
+			this.startService(i);
 		}
 		
 	}
