@@ -51,6 +51,7 @@ public class GaussianBlur {
 		script.setInput(input);
 		script.forEach(output);
 		output.copyTo(result);
+		bitmaps.recycle();
 		return result;
 	}
 

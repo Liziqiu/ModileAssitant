@@ -1,6 +1,7 @@
 package com.gdut.mobileassistant.service;
 
 import com.gdut.mobileassistant.AssistantApp;
+import com.gdut.mobileassistant.ui.ControlCenterView;
 
 import android.app.Service;
 import android.content.Intent;
@@ -12,6 +13,7 @@ public class AssistantService extends Service{
 	public static final String Control_Certer_Switch = "ControlCenterSwitch";
 	
 	private AssistantApp app;
+	private ControlCenterManager mControlCenterManager;
 	@Override
 	public IBinder onBind(Intent i) {
 		return null;
@@ -20,6 +22,7 @@ public class AssistantService extends Service{
 	@Override
 	public void onCreate() {
 		app = (AssistantApp)getApplication();
+		mControlCenterManager = new ControlCenterManager(this);
 		super.onCreate();
 	}
 
@@ -43,7 +46,7 @@ public class AssistantService extends Service{
 
 	private void EnableControlCenter(boolean enable) {
 		app.setControlCenterActivate(enable);
-		
+		mControlCenterManager.enableControlCenter(enable);
 	}
 
 	
