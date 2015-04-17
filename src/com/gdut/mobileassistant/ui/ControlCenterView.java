@@ -1,5 +1,6 @@
 package com.gdut.mobileassistant.ui;
 
+import com.gdut.Util.Util;
 import com.gdut.mobileassistant.R;
 import com.gdut.mobileassistant.service.ControlCenterManager;
 
@@ -9,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AbsoluteLayout;
-import android.widget.AbsoluteLayout.LayoutParams;
 import android.widget.LinearLayout;
 
 public class ControlCenterView {
@@ -26,10 +26,10 @@ public class ControlCenterView {
 		super();
 		this.context = context;
 		config = new ControlCenterConfig();
-		ControlView();
+		initControlView();
 	}
 	
-	private void ControlView(){
+	private void initControlView(){
 		config.ControlCotain=LayoutInflater.from(context).inflate(R.layout.control_center, null);
 		mSlindingHandle=new SlindingHandle(context);
 		mSlindingHandle.setControlView(this);

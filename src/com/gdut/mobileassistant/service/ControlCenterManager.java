@@ -1,9 +1,11 @@
 package com.gdut.mobileassistant.service;
 
 import com.gdut.mobileassistant.ui.ControlCenterView;
+import com.gdut.mobileassistant.ui.ShotcutPanel;
 import com.gdut.mobileassistant.ui.SlindingHandle;
 
 import android.content.Context;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -55,8 +57,10 @@ public class ControlCenterManager {
 		c.setText("cc");
 		Button d = new Button(context);
 		d.setText("dd");
+		mControlCenterView.AddControlViewItem(new ShotcutPanel(context).getPanelView());
 		mControlCenterView.AddControlViewItem(b);
 		mControlCenterView.AddControlViewItem(c);
 		mControlCenterView.AddControlViewItem(d);
 	}
+
 }

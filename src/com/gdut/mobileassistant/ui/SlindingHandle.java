@@ -6,6 +6,7 @@ import com.gdut.mobileassistant.R;
 import com.gdut.mobileassistant.service.ControlCenterManager;
 
 import android.content.Context;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -41,8 +42,10 @@ public class SlindingHandle implements OnTouchListener{
 		//wmParams.type=WindowManager.LayoutParams.TYPE_APPLICATION ;
 		wmParams.flags|=8;
 		wmParams.gravity = Gravity.LEFT | Gravity.TOP;
+		
 		wmParams.x=0;
-		wmParams.y=1920;
+		wmParams.y=app.getScreenHeight()+5;
+		Util.log(TAG, "getScreenHeight()"+wmParams.y);
 		wmParams.width=WindowManager.LayoutParams.WRAP_CONTENT;
 		wmParams.height=WindowManager.LayoutParams.WRAP_CONTENT;
 		wmParams.format=1;
@@ -96,7 +99,7 @@ public class SlindingHandle implements OnTouchListener{
 	}
 
 	private boolean IsNeedOpen(int rawY) {
-		if(rawY>1700){
+		if(rawY>app.getScreenHeight()*4/5){
 			return false;
 		}
 		return true;
