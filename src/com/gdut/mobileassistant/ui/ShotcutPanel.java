@@ -17,8 +17,14 @@ public class ShotcutPanel{
 	public ShotcutPanel(Context context) {
 		this.context = context;
 		PanelView = this.CreatePanelView();
+		CanfigPanelView();
 	}
 	
+	private void CanfigPanelView() {
+		PanelView.getBackground().setAlpha(100);
+		
+	}
+
 	private View CreatePanelView(){
 		return LayoutInflater.from(context).inflate(R.layout.shotcut_panel, null);
 	}
