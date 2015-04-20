@@ -46,6 +46,7 @@ public class SlindingHandle implements OnTouchListener{
 		wmParams.x=0;
 		wmParams.y=app.getScreenHeight()+5;
 		Util.log(TAG, "getScreenHeight()"+wmParams.y);
+		
 		wmParams.width=WindowManager.LayoutParams.WRAP_CONTENT;
 		wmParams.height=WindowManager.LayoutParams.WRAP_CONTENT;
 		wmParams.format=1;

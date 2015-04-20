@@ -50,6 +50,11 @@ public class ControlCenterManager {
 	public void remove(View v){
 		wm.removeView(v);
 	}
+	
+	public void closeControlCenterViewAnimation(){
+		
+	}
+	
 	public void initControlViewMenu(){
 		Button b = new Button(context);
 		b.setText("bb");

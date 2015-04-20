@@ -6,8 +6,10 @@ import com.gdut.mobileassistant.service.ControlCenterManager;
 
 import android.content.Context;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnKeyListener;
 import android.view.WindowManager;
 import android.widget.AbsoluteLayout;
 import android.widget.LinearLayout;
@@ -30,13 +32,21 @@ public class ControlCenterView {
 	}
 	
 	private void initControlView(){
-		config.ControlCotain=LayoutInflater.from(context).inflate(R.layout.control_center, null);
+		config.ControlCotain=(View) LayoutInflater.from(context).inflate(R.layout.control_center, null);
 		mSlindingHandle=new SlindingHandle(context);
 		mSlindingHandle.setControlView(this);
 		config.ControlHandle = mSlindingHandle.gethandle();
 		contain = (LinearLayout) config.ControlCotain.findViewById(R.id.contain);
 		contain.addView(config.ControlHandle);
 		ControlViewParams = (AbsoluteLayout.LayoutParams)contain.getLayoutParams();
+		config.ControlCotain.setOnKeyListener(new OnKeyListener() {
+			
+			@Override
+			public boolean onKey(View v, int code, KeyEvent keyevent) {
+				//Util.log("zhiqiang", "keyevent:"+keyevent.getAction());
+				return true;
+			}
+		});
 	}
 	
 	public void AddControlViewItem(View Item){
@@ -49,9 +59,9 @@ public class ControlCenterView {
 	public WindowManager.LayoutParams getLayoutParams(){
 		if(wmParams == null){
 			wmParams =new WindowManager.LayoutParams();
-			wmParams.type=WindowManager.LayoutParams.TYPE_STATUS_BAR_OVERLAY;
+			wmParams.type=WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
 			//wmParams.type=WindowManager.LayoutParams.TYPE_APPLICATION ;
-			wmParams.flags|=8;
+			wmParams.flags = WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN ;
 			wmParams.gravity = Gravity.LEFT | Gravity.TOP;
 			wmParams.x=0;
 			wmParams.y=0;
