@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <SeekBar
+        android:id="@+id/briness_control_seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_alignBottom="@+id/briness_right"
+        android:layout_toLeftOf="@+id/briness_right"
+        android:layout_toRightOf="@+id/briness_drak"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/seekbar_style"
+        android:thumb="@drawable/seek_thumb" />
+
+    <ImageView
+        android:id="@+id/briness_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/briness_drak"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/ezui_bright" />
+
+    <ImageView
+        android:id="@+id/briness_drak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="22dp"
+        android:src="@drawable/ezui_dark" />
+
+</RelativeLayout>

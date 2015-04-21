@@ -1,6 +1,10 @@
 package com.gdut.mobileassistant.service;
 
+import com.gdut.Util.Util;
+import com.gdut.mobileassistant.ui.AppShotcut;
+import com.gdut.mobileassistant.ui.BirnessControl;
 import com.gdut.mobileassistant.ui.ControlCenterView;
+import com.gdut.mobileassistant.ui.MusicPlayControl;
 import com.gdut.mobileassistant.ui.ShotcutPanel;
 import com.gdut.mobileassistant.ui.SlindingHandle;
 
@@ -13,6 +17,7 @@ import android.widget.Button;
 
 public class ControlCenterManager {
 
+	private static final String TAG = "zhiqiang";
 	private Context context;
 	private WindowManager wm;
 	private SlindingHandle mSlindingHandle;
@@ -52,20 +57,14 @@ public class ControlCenterManager {
 	}
 	
 	public void closeControlCenterViewAnimation(){
-		
+		Util.log(TAG, "closeControlCenterViewAnimation");
 	}
 	
 	public void initControlViewMenu(){
-		Button b = new Button(context);
-		b.setText("bb");
-		Button c = new Button(context);
-		c.setText("cc");
-		Button d = new Button(context);
-		d.setText("dd");
-		mControlCenterView.AddControlViewItem(new ShotcutPanel(context).getPanelView());
-		mControlCenterView.AddControlViewItem(b);
-		mControlCenterView.AddControlViewItem(c);
-		mControlCenterView.AddControlViewItem(d);
+		mControlCenterView.AddControlViewItem(new ShotcutPanel(context).getmView());
+		mControlCenterView.AddControlViewItem(new BirnessControl(context).getmView());
+		mControlCenterView.AddControlViewItem(new MusicPlayControl(context).getmView());
+		mControlCenterView.AddControlViewItem(new AppShotcut(context).getmView());
 	}
 
 }

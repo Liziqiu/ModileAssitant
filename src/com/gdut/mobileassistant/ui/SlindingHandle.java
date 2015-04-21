@@ -34,6 +34,7 @@ public class SlindingHandle implements OnTouchListener{
 		handle = CreateHandle();
 		handle.setOnTouchListener(this);
 		initWindowManager();
+		
 	}
 
 	private void initWindowManager() {
@@ -78,6 +79,7 @@ public class SlindingHandle implements OnTouchListener{
 			if(app.isIsControlCenterOpen()){
 				
 			}else{
+				Util.log(TAG, "SlindingHandle  add the control view");
 				mControlCenterManager.addView(mControlCenterView.getControlView(), mControlCenterView.getLayoutParams());
 			}
 			break;

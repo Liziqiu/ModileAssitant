@@ -16,12 +16,14 @@ import android.widget.LinearLayout;
 
 public class ControlCenterView {
 
+	private static final String TAG = "zhiqiang";
 	private Context context;
 	private ControlCenterConfig config;
 	private LinearLayout contain;
 	private SlindingHandle mSlindingHandle;
 	private WindowManager.LayoutParams wmParams=null;
 	private AbsoluteLayout.LayoutParams ControlViewParams ;
+	private AbsControlView mAbsControlView;
 	private ControlCenterManager mControlCenterManager;
 
 	public ControlCenterView(Context context) {
@@ -39,14 +41,7 @@ public class ControlCenterView {
 		contain = (LinearLayout) config.ControlCotain.findViewById(R.id.contain);
 		contain.addView(config.ControlHandle);
 		ControlViewParams = (AbsoluteLayout.LayoutParams)contain.getLayoutParams();
-		config.ControlCotain.setOnKeyListener(new OnKeyListener() {
-			
-			@Override
-			public boolean onKey(View v, int code, KeyEvent keyevent) {
-				//Util.log("zhiqiang", "keyevent:"+keyevent.getAction());
-				return true;
-			}
-		});
+		mAbsControlView = (AbsControlView) config.ControlCotain.findViewById(R.id.control_contain);
 	}
 	
 	public void AddControlViewItem(View Item){
@@ -57,7 +52,8 @@ public class ControlCenterView {
 	}
 	
 	public WindowManager.LayoutParams getLayoutParams(){
-		if(wmParams == null){
+		Util.log(TAG, "ControlCenterView:getLayoutParams");
+		//if(wmParams == null){
 			wmParams =new WindowManager.LayoutParams();
 			wmParams.type=WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
 			//wmParams.type=WindowManager.LayoutParams.TYPE_APPLICATION ;
@@ -68,7 +64,7 @@ public class ControlCenterView {
 			wmParams.width=WindowManager.LayoutParams.MATCH_PARENT;
 			wmParams.height=WindowManager.LayoutParams.MATCH_PARENT;
 			wmParams.format=1;
-		}
+	//	}
 		return wmParams;
 	}
 	
@@ -96,6 +92,7 @@ public class ControlCenterView {
 	}
 	public void setmControlCenterManager(ControlCenterManager mControlCenterManager) {
 		this.mControlCenterManager = mControlCenterManager;
+		mAbsControlView.setControlCenterManager(mControlCenterManager);
 	}
 	class ControlCenterConfig{
 		public final int BOTTOM=0;
