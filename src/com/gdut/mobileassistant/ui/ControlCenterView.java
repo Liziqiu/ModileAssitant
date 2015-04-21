@@ -35,7 +35,7 @@ public class ControlCenterView {
 	
 	private void initControlView(){
 		config.ControlCotain=(View) LayoutInflater.from(context).inflate(R.layout.control_center, null);
-		mSlindingHandle=new SlindingHandle(context);
+		mSlindingHandle=new SlindingHandle(context,true);
 		mSlindingHandle.setControlView(this);
 		config.ControlHandle = mSlindingHandle.gethandle();
 		contain = (LinearLayout) config.ControlCotain.findViewById(R.id.contain);

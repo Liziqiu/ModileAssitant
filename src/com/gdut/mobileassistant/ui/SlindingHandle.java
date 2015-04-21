@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
 public class SlindingHandle implements OnTouchListener{
 
@@ -20,12 +21,15 @@ public class SlindingHandle implements OnTouchListener{
 	
 	private Context context;
 	private View handle;
+	private ImageView indicator = null;
 	private AssistantApp app;
 	private WindowManager.LayoutParams  wmParams=null;
 	
 	private ControlCenterView mControlCenterView;
 	
 	private ControlCenterManager mControlCenterManager;
+	
+	private boolean Top =false;
 	
 	public SlindingHandle(Context context) {
 		super();
@@ -37,6 +41,22 @@ public class SlindingHandle implements OnTouchListener{
 		
 	}
 
+	public SlindingHandle(Context context,boolean isTop) {
+		super();
+		this.context = context;
+		app = (AssistantApp) context.getApplicationContext();
+		Top=isTop;
+		if(isTop){
+			handle = CreateHandleTop();
+			indicator = (ImageView)handle.findViewById(R.id.indicator);
+		}else{
+			handle = CreateHandle();
+		}
+		handle.setOnTouchListener(this);
+		initWindowManager();
+		
+	}
+	
 	private void initWindowManager() {
 		wmParams =new WindowManager.LayoutParams();
 		wmParams.type=WindowManager.LayoutParams.TYPE_STATUS_BAR_OVERLAY;
@@ -48,7 +68,7 @@ public class SlindingHandle implements OnTouchListener{
 		wmParams.y=app.getScreenHeight()+5;
 		Util.log(TAG, "getScreenHeight()"+wmParams.y);
 		
-		wmParams.width=WindowManager.LayoutParams.WRAP_CONTENT;
+		wmParams.width=WindowManager.LayoutParams.MATCH_PARENT;
 		wmParams.height=WindowManager.LayoutParams.WRAP_CONTENT;
 		wmParams.format=1;
 		
@@ -70,7 +90,10 @@ public class SlindingHandle implements OnTouchListener{
 		return LayoutInflater.from(context).inflate(R.layout.slinding_handle, null);
 	}
 
-
+	private View CreateHandleTop() {
+		return LayoutInflater.from(context).inflate(R.layout.slinding_handle_top, null);
+	}
+	
 	@Override
 	public boolean onTouch(View v, MotionEvent ev) {
 		switch(ev.getAction()){
@@ -82,13 +105,18 @@ public class SlindingHandle implements OnTouchListener{
 				Util.log(TAG, "SlindingHandle  add the control view");
 				mControlCenterManager.addView(mControlCenterView.getControlView(), mControlCenterView.getLayoutParams());
 			}
+			if(Top){
+				indicator.setImageResource(R.drawable.controls_panel_arrow_downward);
+			}
 			break;
 		case MotionEvent.ACTION_MOVE:
-			//Util.log(TAG, "SlindingHandle ACTION_MOVE");
 			mControlCenterView.moveTouch((int) ev.getRawY());
 			break;
 		case MotionEvent.ACTION_UP:
 			Util.log(TAG, "SlindingHandle ACTION_UP");
+			if(Top){
+				indicator.setImageResource(R.drawable.controls_panel_indicator);
+			}
 			if(IsNeedOpen((int) ev.getRawY())){
 				mControlCenterView.ShowWhileControlView(true);
 				app.setIsControlCenterOpen(true);

@@ -46,10 +46,12 @@ public class AbsControlView extends AbsoluteLayout{
 	@Override
 	public boolean dispatchKeyEvent(KeyEvent event) {
 		Util.log(TAG, "dispatchKeyEvent");
-		if(mControlCenterManager != null){
-			mControlCenterManager.closeControlCenterViewAnimation();
-		}else{
-			Util.log(TAG, "mControlCenterManager = null");
+		if(event.getAction() == KeyEvent.ACTION_UP){
+			if(mControlCenterManager != null){
+				mControlCenterManager.closeControlCenterViewAnimation();
+			}else{
+				Util.log(TAG, "mControlCenterManager = null");
+			}
 		}
 		return true;
 	}	

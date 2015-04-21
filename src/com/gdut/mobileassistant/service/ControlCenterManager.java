@@ -1,6 +1,7 @@
 package com.gdut.mobileassistant.service;
 
 import com.gdut.Util.Util;
+import com.gdut.mobileassistant.AssistantApp;
 import com.gdut.mobileassistant.ui.AppShotcut;
 import com.gdut.mobileassistant.ui.BirnessControl;
 import com.gdut.mobileassistant.ui.ControlCenterView;
@@ -22,6 +23,7 @@ public class ControlCenterManager {
 	private WindowManager wm;
 	private SlindingHandle mSlindingHandle;
 	private ControlCenterView mControlCenterView;
+	private AssistantApp app;
 	
 	public ControlCenterManager(Context c) {
 		init(c);
@@ -34,6 +36,7 @@ public class ControlCenterManager {
 		mControlCenterView = new ControlCenterView(c);
 		mControlCenterView.setmControlCenterManager(this);
 		mSlindingHandle.setControlView(mControlCenterView);
+		app = (AssistantApp) context.getApplicationContext();
 		initWindowManager();
 		initControlViewMenu();
 	}
@@ -58,6 +61,8 @@ public class ControlCenterManager {
 	
 	public void closeControlCenterViewAnimation(){
 		Util.log(TAG, "closeControlCenterViewAnimation");
+		mControlCenterView.ShowWhileControlView(false);
+		app.setIsControlCenterOpen(false);
 	}
 	
 	public void initControlViewMenu(){

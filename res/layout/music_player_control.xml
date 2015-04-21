@@ -31,6 +31,7 @@
         android:layout_below="@+id/Song_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
+        android:clickable="true"
         android:src="@drawable/ctrl_music_play_bg" />
 
     <ImageView
@@ -39,6 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/music_pause"
         android:layout_marginLeft="70dp"
+        android:clickable="true"
         android:src="@drawable/ctrl_music_previous_bg" />
 
     <ImageView
@@ -48,6 +50,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/music_pause"
         android:layout_marginRight="70dp"
+        android:clickable="true"
         android:src="@drawable/ctrl_music_next_bg" />
 
     <SeekBar
@@ -65,7 +68,7 @@
         />
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/sound_down"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -73,7 +76,7 @@
         android:src="@drawable/sound_down" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/sound_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView1"

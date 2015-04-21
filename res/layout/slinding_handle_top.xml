@@ -4,10 +4,11 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView1"
+    <ImageView
+        android:id="@+id/indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="      " />
+        android:layout_gravity="center"
+        android:src="@drawable/sliding_handle_top_bg" />
 
 </LinearLayout>
