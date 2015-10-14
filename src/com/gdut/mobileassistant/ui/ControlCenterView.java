@@ -55,7 +55,7 @@ public class ControlCenterView {
 		Util.log(TAG, "ControlCenterView:getLayoutParams");
 		//if(wmParams == null){
 			wmParams =new WindowManager.LayoutParams();
-			wmParams.type=WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
+			wmParams.type=WindowManager.LayoutParams.TYPE_PHONE;
 			//wmParams.type=WindowManager.LayoutParams.TYPE_APPLICATION ;
 			wmParams.flags = WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN ;
 			wmParams.gravity = Gravity.LEFT | Gravity.TOP;
@@ -80,8 +80,8 @@ public class ControlCenterView {
 	public void move(int position){
 		ControlViewParams.x=0;
 		ControlViewParams.y=position;
-		config.ControlCotain.setLayoutParams(ControlViewParams);
-		config.ControlCotain.invalidate();
+		contain.setLayoutParams(ControlViewParams);
+		contain.invalidate();
 	}
 	public void ShowWhileControlView(boolean show){
 		if(show){

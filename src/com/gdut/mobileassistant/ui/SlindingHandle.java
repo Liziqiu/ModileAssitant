@@ -59,7 +59,7 @@ public class SlindingHandle implements OnTouchListener{
 	
 	private void initWindowManager() {
 		wmParams =new WindowManager.LayoutParams();
-		wmParams.type=WindowManager.LayoutParams.TYPE_STATUS_BAR_OVERLAY;
+		wmParams.type=WindowManager.LayoutParams.TYPE_PHONE;
 		//wmParams.type=WindowManager.LayoutParams.TYPE_APPLICATION ;
 		wmParams.flags|=8;
 		wmParams.gravity = Gravity.LEFT | Gravity.TOP;
